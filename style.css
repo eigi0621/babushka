@@ -29,6 +29,8 @@ h1 {
   font-weight: 400;
   font-style: normal;
   font-size: 3.3rem;
+  line-height: 3rem;
+  margin-top: 20px;
 }
 
 h1 span {
@@ -63,19 +65,6 @@ h3 {
   font-size: 1rem;
 }
 
-#pris {
-  text-align: end;
-  padding: 50px 15px 10px 15px;
-  margin: 10px;
-  color: #5F747A;
-  background-color: #fff;
-  transform: rotate(0deg) translateY(-100px);
-  transition: .4s;
-  transition-timing-function: cubic-bezier(.3, 0, .2, 1);
-  align-self: flex-end;
-  z-index: -1;
-}
-
 p {
   font-family: garamond-premier-pro-subhead, serif;
   font-weight: 400;
@@ -84,8 +73,26 @@ p {
   margin: 5px 0;
 }
 
+button {
+  background-color: #9B3A35;
+  border: none;
+  color: #fff;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.3rem;
+  margin: 10px 10px 30px 0;
+  transition: .4s;
+  transition-timing-function: cubic-bezier(.3, 0, .2, 1);
+}
 
-
+button:hover {
+  cursor: pointer;
+  background-color: #5F747A;
+  box-shadow: 0 3px 15px rgba(35, 27, 33, 0.5);
+  transform: scale(1.05);
+}
 
 
 
@@ -99,13 +106,30 @@ p {
 
 #splash {
   width: 100vw;
-  height: 50vw;
+  height: 100vh;
   background-image: url(billeder/splash.jpg);
-  background-size: contain;
-  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+  position: absolute;
   top: 0;
   left: 0;
   margin: 0;
+}
+
+#space_top {
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 100px;
+}
+
+#title,
+#title span {
+  font-size: 8rem;
+  line-height: 12rem;
+  color: #D8BF9C;
+  position: relative;
 }
 
 #nav_bg {
@@ -216,12 +240,25 @@ nav {
 
 #ret:nth-child(odd):hover #pris {
   box-shadow: 0 5px 10px rgba(35, 27, 33, 0.15);
-  transform: rotate(-2deg) translateY(-50px);
+  transform: rotate(-2deg) translateY(-20px);
 }
 
 #ret:nth-child(even):hover #pris {
   box-shadow: 0 5px 10px rgba(35, 27, 33, 0.15);
-  transform: rotate(2deg) translateY(-50px);
+  transform: rotate(2deg) translateY(-20px);
+}
+
+#pris {
+  text-align: end;
+  padding: 20px 15px 10px 15px;
+  margin: 10px;
+  color: #5F747A;
+  background-color: #fff;
+  transform: rotate(0deg) translateY(-50px);
+  transition: .4s;
+  transition-timing-function: cubic-bezier(.3, 0, .2, 1);
+  align-self: flex-end;
+  z-index: -1;
 }
 
 #data_fill {
@@ -230,4 +267,22 @@ nav {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   grid-gap: 0px 60px;
+}
+
+
+
+
+
+
+
+#menu_section {
+  width: 33%;
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  margin: 50px 0;
+  opacity: .5;
 }

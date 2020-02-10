@@ -9,7 +9,15 @@ window.onresize = function (event) {
   }
 }
 
+window.onscroll = function (e) {
+  console.log("onscroll");
+  console.log(window.pageYOffset);
 
+  var speedOfImg = .2;
+  var imgSpeed = window.pageYOffset * speedOfImg;
+  document.querySelector("#splash").style.transform = "translateY(" + imgSpeed + "px)";
+  document.querySelector("#space_top").style.transform = "translateY(" + imgSpeed + "px)";
+}
 
 
 let endpoint = "https://spreadsheets.google.com/feeds/list/1svx2s3B-VtpCUMaaTbVaEM2ds4PkSFW3YE1Upo-JpMs/od6/public/values?alt=json";
