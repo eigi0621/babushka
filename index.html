@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js-objekter</title>
+  <style>
+    img {
+      width: 100%;
+    }
+
+    #personer {
+      border: 2px solid #000;
+      margin: 10px;
+      padding: 10px;
+    }
+
+    #data_fill {
+      max-width: 1000px;
+      margin: 10px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    }
+
+  </style>
+</head>
+
+<body>
+  <main id="data_fill"></main>
+  <template id="template">
+    <article id="personer">
+      <h2 id="navn"></h2>
+      <img src="" alt="">
+      <p id="sex"></p>
+      <p id="alder"></p>
+      <p id="religion"></p>
+      <p id="hobby"></p>
+      <p id="kaeledyr"></p>
+      <p id="job"></p>
+      <p id="by"></p>
+      <p id="rpc"></p>
+    </article>
+  </template>
+  <script src="js.js"></script>
+</body>
+
+</html>
