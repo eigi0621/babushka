@@ -68,12 +68,12 @@ function visPersoner() {
     dataFill.appendChild(klon);
 
     let klon2 = template2.cloneNode(true).content;
-    klon2.querySelector(".ret2 #ret_billede2").style.backgroundImage = `url(billeder/large/${element.gsx$billede.$t}.jpg)`;
-    klon2.querySelector(".ret2 #navn2").innerHTML = `${element.gsx$navn.$t}`;
-    klon2.querySelector(".ret2").classList.add(`ret${element.gsx$id.$t}`);
-    klon2.querySelector(".ret2 #kort2").textContent = `${element.gsx$lang.$t}`;
-    klon2.querySelector(".ret2 #pris2").textContent = `Pris: ${element.gsx$pris.$t},-`;
-    klon2.querySelector(".ret2").style.display = "none";
+    klon2.querySelector(".ret3 #ret_billede2").style.backgroundImage = `url(billeder/large/${element.gsx$billede.$t}.jpg)`;
+    klon2.querySelector(".ret3 #navn2").innerHTML = `${element.gsx$navn.$t}`;
+    klon2.querySelector(".ret3").classList.add(`ret${element.gsx$id.$t}`);
+    klon2.querySelector(".ret3").style.display = "none";
+    klon2.querySelector(".ret3 #kort2").textContent = `${element.gsx$lang.$t}`;
+    klon2.querySelector(".ret3 #pris2").textContent = `Pris: ${element.gsx$pris.$t},-`;
     dataFill2.appendChild(klon2);
   });
   document.querySelectorAll(".ret").forEach(element => {
@@ -87,43 +87,28 @@ function visPersoner() {
 
 function lightbox() {
   document.querySelector("#lightbox_bg").style.display = "inherit";
+  document.querySelector("#lightbox_bg").classList.remove("hide_lightbox");
+  document.querySelector("#lightbox_bg").classList.add("show_lightbox");
   let thisID = this.querySelector(":nth-child(4)").textContent;
-
-  document.querySelector(`.ret${thisID}`).style.display = "inherit";
+  document.querySelector(`.ret${thisID}`).classList.add("pull_up");
+  document.querySelector(`.ret${thisID}`).classList.remove("pull_down");
+  document.querySelector(`.ret${thisID}`).style.display = "flex";
   document.querySelector("#data_fill2").style.visibility = "visible";
-
-  console.log(thisID);
-
   document.querySelector("#data_fill2").addEventListener("click", hideLightbox);
 }
 
 function hideLightbox() {
   this.style.visibility = "hidden";
-  document.querySelector("#lightbox_bg").style.display = "none";
-  document.querySelectorAll(".ret2").forEach(ret => {
-    ret.style.display = "none";
+  document.querySelector("#lightbox_bg").classList.remove("show_lightbox");
+  document.querySelector("#lightbox_bg").classList.add("hide_lightbox");
+  setTimeout(function () {
+    document.querySelector("#lightbox_bg").style.display = "none";
+  }, 400);
+  document.querySelectorAll(".ret3").forEach(ret => {
+    ret.classList.remove("pull_up");
+    ret.classList.add("pull_down");
+    setTimeout(function () {
+      ret.style.display = "none";
+    }, 400);
   });
 }
-
-
-
-
-
-/*function retAnimation() {
-  console.log("retAnimation");
-  var windowWidth = window.innerWidth;
-  let retTop = this.getBoundingClientRect().top - 70;
-  let retLeft = this.getBoundingClientRect().left - (windowWidth - 1000) / 2;
-  this.style.transform = `translate(-${retLeft}px, -${retTop}px)`;
-  this.querySelector("#ret_billede").style.width = "1000px";
-  this.querySelector("#ret_billede").style.height = "400px";
-
-  personer.feed.entry.forEach(element => {
-    this.querySelector("#ret_billede").style.backgroundImage = `url(billeder/large/${element.gsx$billede.$t}.jpg)`;
-  })
-
-  this.querySelector("#navn").style.fontSize = "5rem";
-  this.querySelector("#ret_tekst").style.width = "1000px";
-
-  document.body.style.overflow = "hidden";
-}*/

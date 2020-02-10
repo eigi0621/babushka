@@ -305,7 +305,6 @@ nav {
   left: 0;
   z-index: 2;
   background-color: #231B21;
-  opacity: .5;
   display: none;
 }
 
@@ -328,7 +327,7 @@ nav {
   transition: .4s;
   transition-timing-function: cubic-bezier(.3, 0, .2, 1);
   background-color: #fff;
-  width: 1000px;
+  width: 986px;
 }
 
 #kort2 {
@@ -345,9 +344,69 @@ nav {
 
 }
 
-.ret2 {
+.ret3 {
+  position: fixed;
   display: flex;
   flex-direction: column;
+  transform: translateY(100vw);
+  transition: 2s;
+  transition-timing-function: cubic-bezier(.3, 0, .2, 1);
+}
+
+.pull_up {
+  animation: pull_up-kf .5s cubic-bezier(.25, .25, 0, 1) both;
+}
+
+@keyframes pull_up-kf {
+  0% {
+    transform: translateY(100vw);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.pull_down {
+  animation: pull_down-kf .7s cubic-bezier(.3, 0, .2, 1) both;
+}
+
+@keyframes pull_down-kf {
+  100% {
+    transform: translateY(100vw);
+  }
+
+  0% {
+    transform: translateY(0);
+  }
+}
+
+.show_lightbox {
+  animation: show_lightbox-kf .5s cubic-bezier(.3, 0, .2, 1) both;
+}
+
+@keyframes show_lightbox-kf {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: .7;
+  }
+}
+
+.hide_lightbox {
+  animation: hide_lightbox-kf .5s cubic-bezier(.3, 0, .2, 1) both;
+}
+
+@keyframes hide_lightbox-kf {
+  100% {
+    opacity: 0;
+  }
+
+  0% {
+    opacity: .7;
+  }
 }
 
 #pris2 {
@@ -370,4 +429,5 @@ nav {
   justify-content: center;
   align-items: center;
   visibility: hidden;
+  transform: translateX(-8px);
 }
