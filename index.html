@@ -11,27 +11,47 @@
 
 <body>
   <section id="splash_section">
+    <div id="splash5"></div>
+    <div id="splash4"></div>
+    <div id="splash3"></div>
+    <div id="splash2"></div>
     <div id="splash"></div>
   </section>
   <div id="main_container">
     <div id="nav_bg"></div>
     <header>
       <nav>
-        <div id="nav1"></div>
+        <a href="#">
+          <div id="nav1"></div>
+        </a>
         <div id="nav2">
           <a href="#">Menukort</a>
           <a href="#">Book bord</a>
-          <a href="#">Om Bistro  Babushka</a>
+          <a href="#">Om Bistro Babushka</a>
         </div>
       </nav>
     </header>
     <div id="space_top">
       <h1 id="title"><span>Bistro</span> Babushka</h1>
     </div>
-    <section id="menu_section">
-      <h1>Menu<span>kort</span></h1>
-      <p>Vores menu består af klassiske russiske retter med et moderne tvist. Retterne er gamle bonderetter, der har fået et nyt liv gennem Bistro Babushka. Man kan fremad se, at de har været udset til at læse, at der skal dannes par af ligheder. Dermed kan der afsluttes uden løse ender, og de kan optimeres fra oven af at formidles stort uden brug fra presse. I en kant af landet går der blandt om, at de vil sætte den over forbehold for tiden. Vi flotter med et hold, der vil rundt og se sig om i byen. Det gør heller ikke mere. Men hvor vi nu overbringer denne størrelse til det den handler om, så kan der fortælles op til 3 gange. Hvis det er træet til dit bord der får dig op, er det snarere varmen over de andre.</p>
-    </section>
+    <div id="menu_aabning_wrapper">
+      <section id="menu_section">
+        <h1>Menu<span>kort</span></h1>
+        <p>Vores menu består af klassiske russiske retter med et moderne tvist. Retterne er gamle bonderetter, der har fået et nyt liv gennem Bistro Babushka. Man kan fremad se, at de har været udset til at læse, at der skal dannes par af ligheder. Dermed kan der afsluttes uden løse ender, og de kan optimeres fra oven af at formidles stort uden brug fra presse. I en kant af landet går der blandt om, at de vil sætte den over forbehold for tiden. Vi flotter med et hold, der vil rundt og se sig om i byen. Det gør heller ikke mere. Men hvor vi nu overbringer denne størrelse til det den handler om, så kan der fortælles op til 3 gange. Hvis det er træet til dit bord der får dig op, er det snarere varmen over de andre.</p>
+      </section>
+      <section id="aabning_section">
+        <h1>Åbnings<span>tider</span></h1>
+        <ul>
+          <li class="tider">Mandag: 15:00 - 22:00</li>
+          <li class="tider">Tirsdag: 15:00 - 22:00</li>
+          <li class="tider">Onsdag: 15:00 - 22:00</li>
+          <li class="tider">Torsdag: 15:00 - 22:00</li>
+          <li class="tider">Fredag: 15:00 - 22:00</li>
+          <li class="tider">Lørdag: 15:00 - 22:00</li>
+          <li class="tider">Søndag: 15:00 - 22:00</li>
+        </ul>
+      </section>
+    </div>
     <div class="line"></div>
     <section id="sorter_section">
       <h1>Sorter</h1>
@@ -45,7 +65,9 @@
       <main id="data_fill"></main>
       <template id="template">
         <article class="ret">
-          <div id="ret_billede"></div>
+          <div id="ret_billede">
+            <div class="img_overlay"></div>
+          </div>
           <div id="ret_tekst">
             <h2 id="navn"></h2>
             <p id="kort"></p>
@@ -55,12 +77,14 @@
         </article>
       </template>
     </section>
-     <section id="lightbox_section">
-     <div id="lightbox_bg"></div>
+    <section id="lightbox_section">
+      <div id="lightbox_bg"></div>
       <div id="data_fill2"></div>
       <template id="template2">
         <div class="ret3">
-          <div id="ret_billede2"></div>
+          <div id="ret_billede2">
+            <div class="img_overlay"></div>
+          </div>
           <div id="ret_tekst2">
             <h2 id="navn2"></h2>
             <p id="kort2"></p>
@@ -70,16 +94,7 @@
       </template>
     </section>
     <footer>
-      <h3>Bistro Babushka 2020</h3>
-      <ul>
-        <li class="tider">Mandag: 15:00 - 22:00</li>
-        <li class="tider">Tirsdag: 15:00 - 22:00</li>
-        <li class="tider">Onsdag: 15:00 - 22:00</li>
-        <li class="tider">Torsdag: 15:00 - 22:00</li>
-        <li class="tider">Fredag: 15:00 - 22:00</li>
-        <li class="tider">Lørdag: 15:00 - 22:00</li>
-        <li class="tider">Søndag: 15:00 - 22:00</li>
-      </ul>
+      <p>Bistro Babushka 2020</p>
     </footer>
   </div>
   <script src="js.js"></script>
