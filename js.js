@@ -26,7 +26,7 @@ window.onresize = function (event) {
 
 let endpoint = "https://spreadsheets.google.com/feeds/list/17Dd7DvkPaFamNUdUKlrFgnH6POvBJXac7qyiS6zNRw0/od6/public/values?alt=json";
 let personer = [];
-
+let filter = "alle";
 
 document.addEventListener("DOMContentLoaded", start);
 
@@ -39,6 +39,11 @@ function start() {
     document.querySelector("#main_container").style.margin = "0 20px";
   }
 
+  document.querySelectorAll("#sorter_section button").forEach(knap => {
+    knap.addEventListener("click", sorterRetter)
+  });
+
+
   let personer = []
   hentJSON();
 }
@@ -48,38 +53,57 @@ async function hentJSON() {
 
   const response = await fetch(endpoint);
   personer = await response.json();
-  visPersoner();
+  visRetter();
 }
 
-function visPersoner() {
+function visRetter() {
+  console.log("visRetter");
   let dataFill = document.querySelector("#data_fill");
   let template = document.querySelector("#template");
   let dataFill2 = document.querySelector("#data_fill2");
   let template2 = document.querySelector("#template2");
 
-  personer.feed.entry.forEach(element => {
-    let klon = template.cloneNode(true).content;
-    klon.querySelector(".ret #ret_billede").style.backgroundImage = `url(billeder/small/${element.gsx$billede.$t}-sm.jpg)`;
-    klon.querySelector(".ret #navn").innerHTML = `${element.gsx$navn.$t}`;
-    klon.querySelector(".ret #kort").textContent = `${element.gsx$kort.$t}`;
-    klon.querySelector(".ret #pris").textContent = `Pris: ${element.gsx$pris.$t},-`;
-    klon.querySelector(".ret #hent_id").textContent = `${element.gsx$id.$t}`;
-    klon.querySelector(".ret #hent_id").style.display = "none";
-    dataFill.appendChild(klon);
+  dataFill.textContent = "";
 
-    let klon2 = template2.cloneNode(true).content;
-    klon2.querySelector(".ret3 #ret_billede2").style.backgroundImage = `url(billeder/large/${element.gsx$billede.$t}.jpg)`;
-    klon2.querySelector(".ret3 #navn2").innerHTML = `${element.gsx$navn.$t}`;
-    klon2.querySelector(".ret3").classList.add(`ret${element.gsx$id.$t}`);
-    klon2.querySelector(".ret3").style.display = "none";
-    klon2.querySelector(".ret3 #kort2").textContent = `${element.gsx$lang.$t}`;
-    klon2.querySelector(".ret3 #pris2").textContent = `Pris: ${element.gsx$pris.$t},-`;
-    dataFill2.appendChild(klon2);
+  personer.feed.entry.forEach(element => {
+    if (element.gsx$kategori.$t == filter || filter == "alle") {
+      let klon = template.cloneNode(true).content;
+      klon.querySelector(".ret #ret_billede").style.backgroundImage = `url(billeder/small/${element.gsx$billede.$t}-sm.jpg)`;
+      klon.querySelector(".ret #navn").innerHTML = `${element.gsx$navn.$t}`;
+      klon.querySelector(".ret #kort").textContent = `${element.gsx$kort.$t}`;
+      klon.querySelector(".ret #pris").textContent = `Pris: ${element.gsx$pris.$t},-`;
+      klon.querySelector(".ret #hent_id").textContent = `${element.gsx$id.$t}`;
+      klon.querySelector(".ret #hent_id").style.display = "none";
+      dataFill.appendChild(klon);
+
+      let klon2 = template2.cloneNode(true).content;
+      klon2.querySelector(".ret3 #ret_billede2").style.backgroundImage = `url(billeder/large/${element.gsx$billede.$t}.jpg)`;
+      klon2.querySelector(".ret3 #navn2").innerHTML = `${element.gsx$navn.$t}`;
+      klon2.querySelector(".ret3").classList.add(`ret${element.gsx$id.$t}`);
+      klon2.querySelector(".ret3").style.display = "none";
+      klon2.querySelector(".ret3 #kort2").textContent = `${element.gsx$lang.$t}`;
+      klon2.querySelector(".ret3 #pris2").textContent = `Pris: ${element.gsx$pris.$t},-`;
+      dataFill2.appendChild(klon2);
+    }
   });
+
   document.querySelectorAll(".ret").forEach(element => {
     element.addEventListener("click", lightbox);
   });
 }
+
+function sorterRetter() {
+  console.log("sorterRetter");
+  filter = this.dataset.kategori;
+  console.log(filter + "filter");
+  document.querySelector(".valgt").classList.remove("valgt");
+  this.classList.add("valgt");
+  visRetter();
+}
+
+
+
+
 
 
 
@@ -181,9 +205,36 @@ function imgCarousel() {
       }, 3000);
     }, 3000);
   }, 3000);
+}
 
 
 
+document.querySelector("#burger").addEventListener("click", menuDown);
+
+function menuDown() {
+  document.querySelector("#burger").classList.remove("burger_up");
+  document.querySelector("#burger").classList.add("burger_down");
+  document.querySelector("#nav_bg").classList.remove("burger_up");
+  document.querySelector("#nav_bg").classList.add("burger_down");
+  document.querySelector("#nav3").classList.remove("burger_up");
+  document.querySelector("#nav3").classList.add("burger_down");
 
 
+  document.querySelector("#burger").removeEventListener("click", menuDown);
+  document.querySelector("#burger").addEventListener("click", menuUp);
+  document.querySelector("#nav_bg").addEventListener("click", menuUp);
+}
+
+function menuUp() {
+  document.querySelector("#burger").classList.remove("burger_down");
+  document.querySelector("#burger").classList.add("burger_up");
+  document.querySelector("#nav_bg").classList.remove("burger_down");
+  document.querySelector("#nav_bg").classList.add("burger_up");
+  document.querySelector("#nav3").classList.remove("burger_down");
+  document.querySelector("#nav3").classList.add("burger_up");
+
+
+  document.querySelector("#nav_bg").removeEventListener("click", menuUp);
+  document.querySelector("#burger").removeEventListener("click", menuUp);
+  document.querySelector("#burger").addEventListener("click", menuDown);
 }

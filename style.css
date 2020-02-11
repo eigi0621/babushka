@@ -22,6 +22,10 @@ body {
   overflow: -moz-scrollbars-none;
 }
 
+body {
+  background-color: #F7F2EB;
+}
+
 body::-webkit-scrollbar {
   display: none;
 }
@@ -73,7 +77,8 @@ h3 {
   font-size: 1rem;
 }
 
-p {
+p,
+button {
   font-family: garamond-premier-pro-subhead, serif;
   font-weight: 400;
   font-style: italic;
@@ -102,9 +107,19 @@ button:hover {
   transform: scale(1.05);
 }
 
+#sorter_section .valgt {
+  background-color: #D8BF9C;
+  color: #231B21;
+  transform: scale(1);
+  border: 0 solid #000;
+  box-shadow: 0 3px 15px rgba(35, 27, 33, 0);
+  transition: .05s;
+  cursor: inherit;
+}
 
-
-
+button:focus {
+  outline: 0;
+}
 
 
 
@@ -153,7 +168,7 @@ button:hover {
   height: 100vh;
   display: flex;
   align-items: flex-end;
-  margin-bottom: 100px;
+  margin-bottom: 40px;
 }
 
 #title,
@@ -167,10 +182,10 @@ button:hover {
 
 #nav_bg {
   width: 100%;
-  height: 4rem;
+  height: calc(100vh + 4rem);
   position: fixed;
   z-index: 3;
-  top: 0;
+  top: -100vh;
   left: 0;
   background-color: #9b3a35;
 }
@@ -219,7 +234,9 @@ nav {
   color: #5F747A
 }
 
-
+#nav3 {
+  display: none;
+}
 
 
 
@@ -257,6 +274,10 @@ nav {
 .ret {
   display: flex;
   flex-direction: column;
+}
+
+.ret:hover {
+  cursor: pointer;
 }
 
 .ret:nth-child(odd):hover #ret_billede {
@@ -298,7 +319,7 @@ nav {
   transform: rotate(0deg) translateY(-60px);
   transition: .4s;
   transition-timing-function: cubic-bezier(.3, 0, .2, 1);
-  align-self: center;
+  align-self: flex-end;
   z-index: -1;
 }
 
@@ -306,7 +327,7 @@ nav {
   max-width: 1000px;
   margin: 10px auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 0px 60px;
 }
 
@@ -378,7 +399,6 @@ nav {
 
 #navn2 span {
   font-size: 5rem;
-
 }
 
 .ret3 {
@@ -557,4 +577,160 @@ footer h2 {
 
 footer p {
   margin-top: 50px;
+}
+
+.burger_down {
+  animation: burger_down-kf .5s cubic-bezier(.3, 0, .2, 1) both;
+}
+
+@keyframes burger_down-kf {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(calc(100vh - 4rem));
+  }
+}
+
+.burger_up {
+  animation: burger_up-kf .5s cubic-bezier(.3, 0, .2, 1) both;
+}
+
+@keyframes burger_up-kf {
+  0% {
+    transform: translateY(calc(100vh - 4rem));
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 1000px) {
+
+  h1 {
+    font-size: 2rem;
+    line-height: 2rem;
+    margin-top: 20px;
+  }
+
+  h1 span {
+    font-size: 2.4rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+    line-height: 1.5rem;
+    margin-top: 10px;
+  }
+
+  h2 span {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  p,
+  button {
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+
+  button {
+    padding: 8px 15px;
+    font-size: 1.3rem;
+    margin: 5px 10px 5px 0;
+  }
+
+  #title,
+  #title span {
+    font-size: 4rem;
+    line-height: 4rem;
+  }
+
+  #data_fill {
+    grid-gap: 0px 60px;
+  }
+
+  .ret:nth-child(odd):hover #ret_billede {
+    transform: scale(1) rotate(0) translateY(0);
+  }
+
+  .ret:nth-child(even):hover #ret_billede {
+    transform: scale(1) rotate(0) translateY(0);
+  }
+
+  .ret:nth-child(odd):hover #ret_tekst {
+    transform: scale(1) rotate(0) translateY(0);
+  }
+
+  .ret:nth-child(even):hover #ret_tekst {
+    transform: scale(1) rotate(0) translateY(0);
+  }
+
+  .ret:nth-child(odd):hover #pris {
+    transform: rotate(0) translateY(-20px);
+  }
+
+  .ret:nth-child(even):hover #pris {
+    transform: rotate(0) translateY(-20px);
+  }
+
+  #pris {
+    transform: rotate(0deg) translateY(-20px);
+  }
+
+  #kort2 {
+    font-size: 1rem;
+  }
+
+  #navn2 {
+    font-size: 2rem;
+    line-height: 2.4rem;
+  }
+
+  #pris2 {
+    font-size: 1rem;
+    padding: 10px 10px;
+  }
+
+  #ret_tekst2 {
+    padding: 10px 10px;
+  }
+
+  #burger {
+    background-image: url(billeder/burger2.svg);
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    transform: translate(2px, 3px);
+  }
+
+  #nav2 a {
+    display: none;
+  }
+
+  #nav3 {
+    position: fixed;
+    top: -100px;
+    right: 20px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #nav3 a {
+    flex-basis: 1000px;
+    text-align: end;
+    color: #D8BF9C;
+    text-decoration: none;
+    font-size: 1.6rem;
+  }
+
+  #title,
+  #title span {
+    transform: translateY(-50px);
+  }
 }

@@ -25,9 +25,15 @@
           <div id="nav1"></div>
         </a>
         <div id="nav2">
-          <a href="#">Menukort</a>
+          <a href="#">Forside</a>
           <a href="#">Book bord</a>
-          <a href="#">Om Bistro Babushka</a>
+          <a href="#">Om os</a>
+          <div id="burger"></div>
+        </div>
+        <div id="nav3">
+          <a href="#">Forside</a>
+          <a href="#">Book bord</a>
+          <a href="#">Om os</a>
         </div>
       </nav>
     </header>
@@ -37,29 +43,29 @@
     <div id="menu_aabning_wrapper">
       <section id="menu_section">
         <h1>Menu<span>kort</span></h1>
-        <p>Vores menu består af klassiske russiske retter med et moderne tvist. Retterne er gamle bonderetter, der har fået et nyt liv gennem Bistro Babushka. Man kan fremad se, at de har været udset til at læse, at der skal dannes par af ligheder. Dermed kan der afsluttes uden løse ender, og de kan optimeres fra oven af at formidles stort uden brug fra presse. I en kant af landet går der blandt om, at de vil sætte den over forbehold for tiden. Vi flotter med et hold, der vil rundt og se sig om i byen. Det gør heller ikke mere. Men hvor vi nu overbringer denne størrelse til det den handler om, så kan der fortælles op til 3 gange. Hvis det er træet til dit bord der får dig op, er det snarere varmen over de andre.</p>
+        <p>Vores menu består af klassiske russiske retter med et moderne tvist. Retterne er gamle bonderetter, der har fået et nyt liv gennem Bistro Babushka. Man kan fremad se, at de har været udset til at læse, at der skal dannes par af ligheder. Dermed kan der afsluttes uden løse ender, og de kan optimeres fra oven af at formidles stort uden brug fra presse. Det gør heller ikke mere. Men hvor vi nu overbringer denne størrelse til det den handler om, så kan der fortælles op til 3 gange. Hvis det er træet til dit bord der får dig op, er det snarere varmen over de andre.</p>
       </section>
       <section id="aabning_section">
         <h1>Åbnings<span>tider</span></h1>
         <ul>
-          <li class="tider">Mandag: 15:00 - 22:00</li>
-          <li class="tider">Tirsdag: 15:00 - 22:00</li>
-          <li class="tider">Onsdag: 15:00 - 22:00</li>
-          <li class="tider">Torsdag: 15:00 - 22:00</li>
-          <li class="tider">Fredag: 15:00 - 22:00</li>
-          <li class="tider">Lørdag: 15:00 - 22:00</li>
-          <li class="tider">Søndag: 15:00 - 22:00</li>
+          <li class="tider">Mandag: 17:00 - 21:00</li>
+          <li class="tider">Tirsdag: 17:00 - 21:00</li>
+          <li class="tider">Onsdag: 17:00 - 21:00</li>
+          <li class="tider">Torsdag: 17:00 - 21:00</li>
+          <li class="tider">Fredag: 15:00 - 23:00</li>
+          <li class="tider">Lørdag: 11:00 - 23:00</li>
+          <li class="tider">Søndag: 11:00 - 21:00</li>
         </ul>
       </section>
     </div>
     <div class="line"></div>
     <section id="sorter_section">
       <h1>Sorter</h1>
-      <button>Alle</button>
-      <button>Foretter</button>
-      <button>Hovedretter</button>
-      <button>Desserter</button>
-      <button>Drikkevarer</button>
+      <button data-kategori="alle" class="valgt">Alle</button>
+      <button data-kategori="forretter">Foretter</button>
+      <button data-kategori="hovedretter">Hovedretter</button>
+      <button data-kategori="desserter">Desserter</button>
+      <button data-kategori="drikkevarer">Drikkevarer</button>
     </section>
     <section id="retter_section">
       <main id="data_fill"></main>
@@ -94,7 +100,7 @@
       </template>
     </section>
     <footer>
-      <p>Bistro Babushka 2020</p>
+      <p>Bistro Babushka af Eigil Nikolajsen Feb. 2020</p>
     </footer>
   </div>
   <script src="js.js"></script>
