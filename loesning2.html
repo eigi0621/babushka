@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bistro Babushka</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.typekit.net/axo0yxg.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="billeder/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="billeder/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="billeder/favicon/favicon-16x16.png">
+  <link rel="manifest" href="billeder/favicon/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+  <section id="splash_section">
+    <div id="splash5"></div>
+    <div id="splash4"></div>
+    <div id="splash3"></div>
+    <div id="splash2"></div>
+    <div id="splash"></div>
+  </section>
+  <div id="main_container">
+    <div id="nav_bg"></div>
+    <header>
+      <nav>
+        <a href="#">
+          <div id="nav1"></div>
+        </a>
+        <div id="nav2">
+          <a href="#">Forside</a>
+          <a href="#">Book bord</a>
+          <a href="#">Om os</a>
+          <div id="burger"></div>
+        </div>
+        <div id="nav3">
+          <a href="#">Forside</a>
+          <a href="#">Book bord</a>
+          <a href="#">Om os</a>
+        </div>
+      </nav>
+    </header>
+    <div id="space_top">
+      <h1 id="title"><span>Bistro</span> Babushka</h1>
+    </div>
+    <div id="menu_aabning_wrapper">
+      <section id="menu_section">
+        <h1>Menu<span>kort</span></h1>
+        <p>Vores menu består af klassiske russiske retter med et moderne tvist. Retterne er gamle bonderetter, der har fået et nyt liv gennem Bistro Babushka. Man kan fremad se, at de har været udset til at læse, at der skal dannes par af ligheder. Dermed kan der afsluttes uden løse ender, og de kan optimeres fra oven af at formidles stort uden brug fra presse. Det gør heller ikke mere. Men hvor vi nu overbringer denne størrelse til det den handler om, så kan der fortælles op til 3 gange. Hvis det er træet til dit bord der får dig op, er det snarere varmen over de andre.</p>
+      </section>
+      <section id="aabning_section">
+        <h1>Åbnings<span>tider</span></h1>
+        <ul>
+          <li class="tider">Mandag: 17:00 - 21:00</li>
+          <li class="tider">Tirsdag: 17:00 - 21:00</li>
+          <li class="tider">Onsdag: 17:00 - 21:00</li>
+          <li class="tider">Torsdag: 17:00 - 21:00</li>
+          <li class="tider">Fredag: 15:00 - 23:00</li>
+          <li class="tider">Lørdag: 11:00 - 23:00</li>
+          <li class="tider">Søndag: 11:00 - 21:00</li>
+        </ul>
+      </section>
+    </div>
+    <div class="line"></div>
+    <section id="sorter_section">
+      <h1>Sorter</h1>
+      <button data-kategori="alle" class="valgt">Alle</button>
+      <button data-kategori="forretter">Foretter</button>
+      <button data-kategori="hovedretter">Hovedretter</button>
+      <button data-kategori="desserter">Desserter</button>
+      <button data-kategori="drikkevarer">Drikkevarer</button>
+    </section>
+    <section id="retter_section">
+      <main id="data_fill"></main>
+      <template id="template">
+        <article class="ret">
+          <div id="ret_billede">
+            <div class="img_overlay"></div>
+          </div>
+          <div id="ret_tekst">
+            <h2 id="navn"></h2>
+            <p id="kort"></p>
+          </div>
+          <h3 id="pris"></h3>
+          <p id="hent_id"></p>
+        </article>
+      </template>
+    </section>
+    <section id="lightbox_section">
+      <div id="lightbox_bg"></div>
+      <div id="popup">
+        <div class="ret_popup">
+          <div id="popup_billede">
+            <div class="img_overlay"></div>
+          </div>
+          <div id="popup_tekst">
+            <h2 id="popup_navn"></h2>
+            <p id="popup_lang"></p>
+          </div>
+          <h3 id="popup_pris"></h3>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <p>Bistro Babushka af Eigil Nikolajsen Feb. 2020</p>
+    </footer>
+  </div>
+  <script>
+    window.onresize = function(event) {
+      let windowWidth = window.innerWidth;
+      if (window.matchMedia("(min-width: 1000px)").matches) {
+        document.querySelector("#main_container").style.margin = "0 " + (windowWidth - 1000) / 2 + "px";
+      } else {
+        document.querySelector("#main_container").style.margin = "0";
+      }
+    }
+
+    function resizeWindow() {
+      let windowWidth = window.innerWidth;
+      if (window.matchMedia("(min-width: 1000px)").matches) {
+        document.querySelector("#main_container").style.margin = "0 " + (windowWidth - 1000) / 2 + "px";
+      } else {
+        document.querySelector("#main_container").style.margin = "0";
+      }
+    }
+
+    /*window.onscroll = function (e) {
+      var speedOfImg = .2;
+      var imgSpeed = window.pageYOffset * speedOfImg;
+      document.querySelector("#splash").style.transform = "translateY(" + imgSpeed + "px)";
+      document.querySelector("#space_top").style.transform = "translateY(" + imgSpeed + "px)";
+    }*/
+
+
+
+
+
+
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
+    let endpoint = "https://spreadsheets.google.com/feeds/list/17Dd7DvkPaFamNUdUKlrFgnH6POvBJXac7qyiS6zNRw0/od6/public/values?alt=json";
+    let retter = [];
+    let filter = "alle";
+    let popUp = document.querySelector("#popup");
+
+    document.addEventListener("DOMContentLoaded", start);
+
+    function start() {
+      console.log("start");
+
+      var windowWidth = window.innerWidth;
+      if (window.matchMedia("(min-width: 1000px)").matches) {
+        document.querySelector("#main_container").style.margin = "0 " + (windowWidth - 1000) / 2 + "px";
+      } else {
+        document.querySelector("#main_container").style.margin = "0 20px";
+      }
+
+      document.querySelectorAll("#sorter_section button").forEach(knap => {
+        knap.addEventListener("click", sorterRetter)
+      });
+
+
+      let retter = []
+      hentJSON();
+
+
+      resizeWindow();
+    }
+
+    async function hentJSON() {
+      console.log("hent json");
+
+      const response = await fetch(endpoint);
+      retter = await response.json();
+      visRetter();
+    }
+
+    function visRetter() {
+      console.log("visRetter");
+      let dataFill = document.querySelector("#data_fill");
+      let template = document.querySelector("#template");
+
+      dataFill.textContent = "";
+
+      retter.feed.entry.forEach(element => {
+        if (element.gsx$kategori.$t == filter || filter == "alle") {
+          let klon = template.cloneNode(true).content;
+          klon.querySelector(".ret #ret_billede").style.backgroundImage = `url("billeder/small/${element.gsx$billede.$t}-sm.jpg")`;
+          klon.querySelector(".ret #navn").innerHTML = `${element.gsx$navn.$t}`;
+          klon.querySelector(".ret #kort").textContent = `${element.gsx$kort.$t}`;
+          klon.querySelector(".ret #pris").textContent = `Pris: ${element.gsx$pris.$t},-`;
+          klon.querySelector(".ret #hent_id").textContent = `${element.gsx$id.$t}`;
+          klon.querySelector(".ret #hent_id").style.display = "none";
+          klon.querySelector(".ret").addEventListener("click", () => {
+            location.href = `detail.html?id=${element.gsx$id.$t}`;
+          });
+          dataFill.appendChild(klon);
+        }
+      });
+
+      resizeWindow();
+    }
+
+    function sorterRetter() {
+      console.log("sorterRetter");
+      filter = this.dataset.kategori;
+      console.log(filter + "filter");
+      document.querySelector(".valgt").classList.remove("valgt");
+      this.classList.add("valgt");
+      visRetter();
+    }
+
+
+
+
+
+
+
+    document.querySelectorAll(".ret_popup").forEach(ret => {
+      ret.classList.add("pull_down");
+    });
+
+    function lightbox(element) {
+      document.querySelector("#lightbox_bg").style.display = "inherit";
+      document.querySelector("#lightbox_bg").classList.remove("hide_lightbox");
+      document.querySelector("#lightbox_bg").classList.add("show_lightbox");
+
+      popUp.querySelector(".ret_popup").classList.remove("pull_down");
+      popUp.querySelector(".ret_popup").classList.add("pull_up");
+      popUp.querySelector(".ret_popup #popup_billede").style.backgroundImage = `url(billeder/large/${element.gsx$billede.$t}.jpg)`;
+      popUp.querySelector(".ret_popup #popup_navn").textContent = `${element.gsx$navn.$t}`;
+      popUp.querySelector(".ret_popup").style.display = "flex";
+      popUp.querySelector(".ret_popup #popup_lang").textContent = `${element.gsx$lang.$t}`;
+      popUp.querySelector(".ret_popup #popup_pris").textContent = `Pris: ${element.gsx$pris.$t},-`;
+      popUp.style.visibility = "visible";
+      popUp.addEventListener("click", hideLightbox);
+    }
+
+    function hideLightbox() {
+      document.querySelector("#lightbox_bg").classList.remove("show_lightbox");
+      document.querySelector("#lightbox_bg").classList.add("hide_lightbox");
+      setTimeout(function() {
+        document.querySelector("#lightbox_bg").style.display = "none";
+        document.querySelector("#popup").style.visibility = "hidden";
+      }, 400);
+      document.querySelectorAll(".ret_popup").forEach(ret => {
+        ret.classList.remove("pull_up");
+        ret.classList.add("pull_down");
+        setTimeout(function() {
+          ret.style.display = "none";
+        }, 400);
+      });
+    }
+
+
+
+
+    let splash = document.querySelector("#splash");
+    let splash2 = document.querySelector("#splash2");
+    let splash3 = document.querySelector("#splash3");
+    let splash4 = document.querySelector("#splash4");
+    let splash5 = document.querySelector("#splash5");
+
+    imgCarousel();
+
+    function imgCarousel() {
+      setTimeout(function() {
+        splash.classList.remove("splash_left");
+        splash.classList.add("splash_right");
+        splash2.classList.remove("splash_right");
+        splash2.classList.add("splash_left");
+        setTimeout(function() {
+          splash2.classList.remove("splash_left");
+          splash2.classList.add("splash_right");
+          splash3.classList.remove("splash_right");
+          splash3.classList.add("splash_left");
+          setTimeout(function() {
+            splash3.classList.remove("splash_left");
+            splash3.classList.add("splash_right");
+            splash4.classList.remove("splash_right");
+            splash4.classList.add("splash_left");
+            setTimeout(function() {
+              splash4.classList.remove("splash_left");
+              splash4.classList.add("splash_right");
+              splash5.classList.remove("splash_right");
+              splash5.classList.add("splash_left");
+              setTimeout(function() {
+                splash5.classList.remove("splash_left");
+                splash5.classList.add("splash_right");
+                splash.classList.remove("splash_right");
+                splash.classList.add("splash_left");
+
+                imgCarousel();
+              }, 3000);
+            }, 3000);
+          }, 3000);
+        }, 3000);
+      }, 3000);
+    }
+
+
+
+    document.querySelector("#burger").addEventListener("click", menuDown);
+
+    function menuDown() {
+      document.querySelector("#burger").classList.remove("burger_up");
+      document.querySelector("#burger").classList.add("burger_down");
+      document.querySelector("#nav_bg").classList.remove("burger_up");
+      document.querySelector("#nav_bg").classList.add("burger_down");
+      document.querySelector("#nav3").classList.remove("burger_up");
+      document.querySelector("#nav3").classList.add("burger_down");
+
+
+      document.querySelector("#burger").removeEventListener("click", menuDown);
+      document.querySelector("#burger").addEventListener("click", menuUp);
+      document.querySelector("#nav_bg").addEventListener("click", menuUp);
+    }
+
+    function menuUp() {
+      document.querySelector("#burger").classList.remove("burger_down");
+      document.querySelector("#burger").classList.add("burger_up");
+      document.querySelector("#nav_bg").classList.remove("burger_down");
+      document.querySelector("#nav_bg").classList.add("burger_up");
+      document.querySelector("#nav3").classList.remove("burger_down");
+      document.querySelector("#nav3").classList.add("burger_up");
+
+
+      document.querySelector("#nav_bg").removeEventListener("click", menuUp);
+      document.querySelector("#burger").removeEventListener("click", menuUp);
+      document.querySelector("#burger").addEventListener("click", menuDown);
+    }
+  </script>
+</body></html>
