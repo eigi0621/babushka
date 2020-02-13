@@ -30,7 +30,8 @@ function resizeWindow () {
 
 
 
-
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get("id");
 let endpoint = "https://spreadsheets.google.com/feeds/list/17Dd7DvkPaFamNUdUKlrFgnH6POvBJXac7qyiS6zNRw0/od6/public/values?alt=json";
 let retter = [];
 let filter = "alle";
@@ -40,6 +41,7 @@ document.addEventListener("DOMContentLoaded", start);
 
 function start() {
   console.log("start");
+
   var windowWidth = window.innerWidth;
   if (window.matchMedia("(min-width: 1000px)").matches) {
     document.querySelector("#main_container").style.margin = "0 " + (windowWidth - 1000) / 2 + "px";
@@ -54,6 +56,7 @@ function start() {
 
   let retter = []
   hentJSON();
+
 
   resizeWindow();
 }
@@ -76,16 +79,19 @@ function visRetter() {
   retter.feed.entry.forEach(element => {
     if (element.gsx$kategori.$t == filter || filter == "alle") {
       let klon = template.cloneNode(true).content;
-      klon.querySelector(".ret #ret_billede").style.backgroundImage = `url(billeder/small/${element.gsx$billede.$t}-sm.jpg)`;
+      klon.querySelector(".ret #ret_billede").style.backgroundImage = `url("billeder/small/${element.gsx$billede.$t}-sm.jpg")`;
       klon.querySelector(".ret #navn").innerHTML = `${element.gsx$navn.$t}`;
       klon.querySelector(".ret #kort").textContent = `${element.gsx$kort.$t}`;
       klon.querySelector(".ret #pris").textContent = `Pris: ${element.gsx$pris.$t},-`;
       klon.querySelector(".ret #hent_id").textContent = `${element.gsx$id.$t}`;
       klon.querySelector(".ret #hent_id").style.display = "none";
-      klon.querySelector(".ret").addEventListener("click", () => lightbox(element));
+      klon.querySelector(".ret").addEventListener("click", () => {
+        location.href = `detail.html?id=${element.gsx$id.$t}`;
+      });
       dataFill.appendChild(klon);
     }
   });
+
   resizeWindow();
 }
 
@@ -139,7 +145,6 @@ function hideLightbox() {
     }, 400);
   });
 }
-
 
 
 

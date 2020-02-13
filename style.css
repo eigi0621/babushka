@@ -171,6 +171,11 @@ button:focus {
   margin-bottom: 40px;
 }
 
+.spacing1 {
+  height: 100px;
+  width: 10px;
+}
+
 #title,
 #title span {
   font-size: 8rem;
@@ -184,14 +189,14 @@ button:focus {
   width: 100%;
   height: calc(100vh + 4rem);
   position: fixed;
-  z-index: 3;
+  z-index: 30;
   top: -100vh;
   left: 0;
   background-color: #9b3a35;
 }
 
 header {
-  z-index: 4;
+  z-index: 40;
   position: fixed;
   top: 0;
   width: 100%;
@@ -370,7 +375,7 @@ nav {
   display: none;
 }
 
-#ret_billede2 {
+#popup_billede {
   width: 100%;
   height: 70vw;
   background-size: cover;
@@ -382,26 +387,26 @@ nav {
   max-height: 500px;
 }
 
-#ret_tekst2 {
+#popup_tekst {
   box-shadow: 0 5px 15px rgba(35, 27, 33, 0.15);
   padding: 10px 30px;
   background-color: #fff;
 }
 
-#kort2 {
+#popup_lang {
   font-size: 1.5rem;
 }
 
-#navn2 {
+#popup_navn {
   font-size: 4.3rem;
   line-height: 5rem;
 }
 
-#navn2 span {
+#popup_navn span {
   font-size: 5rem;
 }
 
-.ret3 {
+.ret_popup {
   width: calc(100vw - 40px);
   max-width: 960px;
   position: fixed;
@@ -466,7 +471,7 @@ nav {
   }
 }
 
-#pris2 {
+#popup_pris {
   padding: 10px 30px 20px 30px;
   color: #5F747A;
   background-color: #fff;
@@ -475,7 +480,7 @@ nav {
   font-size: 2rem;
 }
 
-#data_fill2 {
+#popup {
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -683,21 +688,21 @@ footer p {
     transform: rotate(0deg) translateY(-20px);
   }
 
-  #kort2 {
+  #popup_lang {
     font-size: 1rem;
   }
 
-  #navn2 {
+  #popup_navn {
     font-size: 2rem;
     line-height: 2.4rem;
   }
 
-  #pris2 {
+  #popup_pris {
     font-size: 1rem;
     padding: 10px 10px;
   }
 
-  #ret_tekst2 {
+  #popup_tekst {
     padding: 10px 10px;
   }
 
